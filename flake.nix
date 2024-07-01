@@ -3,21 +3,21 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # next-ls = {
-    #   url = "github:elixir-tools/next-ls";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # ghostty = {
-    #   url = "git+ssh://git@github.com/ghostty-org/ghostty";
-    # };
+    next-ls = {
+      url = "github:elixir-tools/next-ls";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    # next-ls,
-    # ghostty,
+    next-ls,
+    ghostty,
     ...
   } @ attrs: {
     nixosConfigurations.pine = nixpkgs.lib.nixosSystem {
@@ -36,7 +36,7 @@
     };
 
     homeConfigurations."joel" = home-manager.lib.homeManagerConfiguration {
-      pkgs = {inherit nixpkgs;}.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
@@ -44,7 +44,7 @@
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
-      # extraSpecialArgs = {inherit next-ls;};
+      extraSpecialArgs = {inherit next-ls ghostty;};
     };
   };
 }
