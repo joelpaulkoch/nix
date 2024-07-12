@@ -102,44 +102,31 @@
           }
           {
             name = "heex";
-            language-servers = ["nextls"];
+            language-servers = ["nextls" "tailwindcss-language-server"];
             auto-format = true;
           }
         ];
-      };
-    };
-
-    zellij = {
-      enable = true;
-    };
-
-    alacritty = {
-      enable = true;
-      settings.shell = {
-        program = "zellij";
-        args = ["-l" "welcome"];
       };
     };
   };
 
   home.packages = with pkgs;
     [
-      neofetch
-      fzf
-      lazygit
-      gitui
-
       act
       alejandra
       asciinema
       bat
       bottom
+      fzf
       gh
       htop
       jq
+      lazygit
       ncdu
+      neofetch
       nil
       ripgrep
+      tailwindcss-language-server
       tokei
       tree
       xclip
