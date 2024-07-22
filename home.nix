@@ -20,9 +20,12 @@
       enable = true;
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
+
         if type -q mise
           ~/.local/bin/mise activate fish | source
         end
+
+        fish_add_path ~/.fly/bin/
       '';
       plugins = [
         {
@@ -120,8 +123,10 @@
       asciinema
       bat
       bottom
+      flyctl
       fzf
       gh
+      glab
       htop
       jq
       lazygit
