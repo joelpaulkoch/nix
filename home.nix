@@ -24,8 +24,6 @@
         if type -q mise
           ~/.local/bin/mise activate fish | source
         end
-
-        fish_add_path ~/.fly/bin/
       '';
       plugins = [
         {
