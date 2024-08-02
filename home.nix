@@ -146,16 +146,23 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    ".config/ghostty/config".text = ''
+      keybind = super+enter=new_split:auto
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+      keybind = super+left_bracket=goto_split:previous
+      keybind = super+right_bracket=goto_split:next
+
+      keybind = shift+super+enter=toggle_split_zoom
+
+      keybind = ctrl+shift+tab=previous_tab
+      keybind = ctrl+tab=next_tab
+
+      window-decoration = false
+
+      gtk-tabs-location = bottom
+
+      shell-integration = fish
+    '';
   };
 
   home.sessionVariables = {
