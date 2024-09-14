@@ -128,6 +128,7 @@
       htop
       jq
       lazygit
+      lazysql
       ncdu
       neofetch
       nil
@@ -137,6 +138,7 @@
       tree
       xclip
       xh
+      yazi
     ]
     ++ [
       next-ls.packages.${pkgs.system}.default
@@ -179,6 +181,7 @@
     hmsw = "home-manager switch --flake ~/nix";
 
     lg = "lazygit";
+    lsql = "lazysql";
   };
 
   # Let Home Manager install and manage itself.
